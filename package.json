@@ -15,6 +15,7 @@
   "scripts": {
     "start": "NODE_ENV=development parcel src/index.html",
     "build": "parcel build src/index.html",
+    "build:manifest": "node scripts/build.js",
     "test": "npm run test:lint",
     "test:lint": "eslint src"
   },
