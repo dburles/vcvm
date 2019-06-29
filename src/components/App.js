@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Flex, Box, Text, Button } from 'rebass';
-import { allTags } from '../data';
 import data from '../data.json';
+import allTags from '../data/tags';
 import alphabeticSort from '../lib/alphabetic-sort';
 import Link from './Link';
 import ModuleCard from './ModuleCard';
@@ -80,7 +80,8 @@ const App = () => {
                     .filter(module =>
                       selectedTag
                         ? module.tags.some(
-                            tag => tag.toLowerCase() === selectedTag,
+                            tag =>
+                              tag.toLowerCase() === selectedTag.toLowerCase(),
                           )
                         : true,
                     )
