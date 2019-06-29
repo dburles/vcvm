@@ -79,6 +79,7 @@ const App = () => {
                 )
                 .map(collection =>
                   collection.modules
+                    .filter(module => module.disabled !== 'true')
                     .filter(module =>
                       selectedTag
                         ? module.tags.some(
