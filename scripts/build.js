@@ -3,8 +3,8 @@ const { readdirSync, readFileSync, writeFileSync } = require('fs');
 
 const MANIFEST_PATH = 'temp/library/manifests/';
 
-execSync('git clone https://github.com/VCVRack/library.git temp/library');
 try {
+  execSync('git clone https://github.com/VCVRack/library.git temp/library');
   const files = readdirSync(MANIFEST_PATH);
   const data = files.map(file =>
     JSON.parse(readFileSync(MANIFEST_PATH + file, 'utf8')),
