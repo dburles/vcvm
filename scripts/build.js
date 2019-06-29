@@ -5,8 +5,7 @@ const MANIFEST_PATH = 'temp/library/manifests/';
 
 try {
   execSync('git clone https://github.com/VCVRack/library.git temp/library');
-  const files = readdirSync(MANIFEST_PATH);
-  const data = files.map(file =>
+  const data = readdirSync(MANIFEST_PATH).map(file =>
     JSON.parse(readFileSync(MANIFEST_PATH + file, 'utf8')),
   );
   writeFileSync('./src/data.json', JSON.stringify(data));
