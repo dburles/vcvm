@@ -1,4 +1,4 @@
-import { Law, Versions, Person } from '@primer/octicons-react';
+import { Law, Versions, Person, LinkExternal } from '@primer/octicons-react';
 import React from 'react';
 import { Flex, Box, Card, Text } from 'rebass';
 import styled from 'styled-components';
@@ -39,6 +39,7 @@ const ModuleCard = props => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  <Icon mr={1} icon={LinkExternal} />
                   {props.collection.brand || props.collection.name}
                 </a>
               </Text>

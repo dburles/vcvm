@@ -1,8 +1,10 @@
+import { MarkGithub } from '@primer/octicons-react';
 import React, { useState } from 'react';
 import { Flex, Box, Text, Button } from 'rebass';
 import data from '../data.json';
 import allTags from '../data/tags';
 import alphabeticSort from '../lib/alphabetic-sort';
+import Icon from './Icon.js';
 import Link from './Link';
 import ModuleCard from './ModuleCard';
 import Title from './Title';
@@ -100,6 +102,16 @@ const App = () => {
             )}
           </Flex>
         </Box>
+      </Flex>
+      <Flex m={4} justifyContent="center">
+        <Icon icon={MarkGithub} color="black" mr={2} />{' '}
+        <a
+          href="https://github.com/dburles/vcvm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
       </Flex>
     </>
   );
