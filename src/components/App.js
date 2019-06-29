@@ -93,7 +93,7 @@ const App = () => {
                     .sort((a, b) => alphabeticSort(a.name, b.name))
                     .map(module => (
                       <Box
-                        width={[1, 1, 1, 1 / 2]}
+                        width={[1, 1, 1, 1 / 3]}
                         key={module.slug}
                         px={2}
                         py={2}
