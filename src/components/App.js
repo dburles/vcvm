@@ -1,7 +1,7 @@
 import { MarkGithub } from '@primer/octicons-react';
 import React, { useState } from 'react';
 import { Flex, Box, Text, Button } from 'rebass';
-import data from '../data.json';
+import data from '../data/data.json';
 import allTags from '../data/tags';
 import alphabeticSort from '../lib/alphabetic-sort';
 import Icon from './Icon.js';

@@ -1,4 +1,4 @@
-import data from './data.json';
+import data from './data/data.json';
 import alphabeticSort from './lib/alphabetic-sort';
 import identity from './lib/identity';
 import unique from './lib/unique';

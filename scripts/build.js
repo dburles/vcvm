@@ -8,7 +8,7 @@ try {
   const data = readdirSync(MANIFEST_PATH).map(file =>
     JSON.parse(readFileSync(MANIFEST_PATH + file, 'utf8')),
   );
-  writeFileSync('./src/data.json', JSON.stringify(data));
+  writeFileSync('./src/data/data.json', JSON.stringify(data));
   execSync('rm -rf ./temp');
 } catch (error) {
   console.log(error);
