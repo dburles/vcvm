@@ -37,6 +37,7 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
+    "@primer/octicons-react": "^9.1.1",
     "@reach/router": "^1.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
