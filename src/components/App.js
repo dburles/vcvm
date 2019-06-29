@@ -16,7 +16,9 @@ const App = () => {
   return (
     <>
       <Flex m={4} justifyContent="center">
-        <Title fontSize={5}>Rack modules</Title>
+        <Title fontSize={4} fontWeight="bold">
+          VCV Rack Modules
+        </Title>
       </Flex>
       <Flex m={3}>
         <Box p={3}>
