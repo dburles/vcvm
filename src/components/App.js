@@ -1,6 +1,6 @@
 import { MarkGithub } from '@primer/octicons-react';
 import qs from 'qs';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Flex, Box, Text, Button } from 'rebass';
 import data from '../data/data.json';
 import allTags from '../data/tags';
@@ -12,6 +12,10 @@ import Title from './Title';
 
 const App = () => {
   const [, update] = useState();
+
+  useEffect(() => {
+    window.onpopstate = () => update({});
+  });
 
   const updateRoute = state => {
     window.history.pushState({}, null, `?${qs.stringify(state)}`);
