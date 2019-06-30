@@ -1,7 +1,7 @@
 import { Law, Versions, Person, LinkExternal } from '@primer/octicons-react';
 import React from 'react';
 import { Flex, Box, Card, Text } from 'rebass';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import NoImage from '../assets/NoImage';
 import Divider from './Divider';
 import Icon from './Icon';
@@ -27,7 +27,14 @@ const ModuleCard = props => {
           <NoImage />
         </ImagePlaceholder>
 
-        <Flex flexDirection="column" p={3}>
+        <Flex
+          flexDirection="column"
+          p={3}
+          css={css`
+            overflow: auto;
+            word-wrap: break-word;
+          `}
+        >
           <Box>
             <Flex flexDirection="column">
               <Text fontWeight="bold">{props.module.name}</Text>
