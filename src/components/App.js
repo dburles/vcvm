@@ -14,7 +14,7 @@ const App = () => {
   const [, update] = useState();
 
   const updateRoute = state => {
-    window.history.replaceState({}, null, `?${qs.stringify(state)}`);
+    window.history.pushState({}, null, `?${qs.stringify(state)}`);
     update({});
   };
 
