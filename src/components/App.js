@@ -92,12 +92,7 @@ const App = () => {
                     )
                     .sort((a, b) => alphabeticSort(a.name, b.name))
                     .map(module => (
-                      <Box
-                        width={[1, 1, 1, 1 / 3]}
-                        key={module.slug}
-                        px={2}
-                        py={2}
-                      >
+                      <Box key={module.slug} px={2} py={2} flex="0 0 320px">
                         <ModuleCard module={module} collection={collection} />
                       </Box>
                     )),
