@@ -54,8 +54,8 @@ const App = () => {
           VCV Rack Modules
         </Title>
       </Flex>
-      <Flex m={3}>
-        <Box p={3}>
+      <Flex m={1}>
+        <Box>
           <Button
             border="1px solid"
             borderColor="grey.7"
@@ -122,7 +122,7 @@ const App = () => {
                     )
                     .sort((a, b) => alphabeticSort(a.name, b.name))
                     .map(module => (
-                      <Box key={module.slug} px={2} py={2} flex="0 0 320px">
+                      <Box key={module.slug} px={2} py={2} flex="0 0 340px">
                         <ModuleCard module={module} collection={collection} />
                       </Box>
                     )),
