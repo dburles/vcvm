@@ -21,7 +21,7 @@ const ImagePlaceholder = styled.div`
 
 const ModuleCard = props => {
   return (
-    <Card borderRadius={5} border="1px solid" borderColor="grey.3" bg="grey.0">
+    <Card borderRadius={5} border="1px solid" borderColor="grey.3">
       <Flex>
         <ImagePlaceholder>
           <NoImage />
