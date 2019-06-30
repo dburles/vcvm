@@ -1,4 +1,5 @@
 import { MarkGithub } from '@primer/octicons-react';
+import qs from 'qs';
 import React, { useState } from 'react';
 import { Flex, Box, Text, Button } from 'rebass';
 import data from '../data/data.json';
@@ -10,8 +11,37 @@ import ModuleCard from './ModuleCard';
 import Title from './Title';
 
 const App = () => {
-  const [selectedCollection, setSelectedCollection] = useState();
-  const [selectedTag, setSelectedTag] = useState();
+  const [, update] = useState();
+
+  const updateRoute = state => {
+    window.history.replaceState({}, null, `?${qs.stringify(state)}`);
+    update({});
+  };
+
+  const query = qs.parse(window.location.search.substr(1));
+
+  const selectedCollection = query.c;
+  const selectedTags = query.t || [];
+
+  const toggleSelectedCollection = collection => {
+    if (query.c === collection) {
+      delete query.c;
+      updateRoute(query);
+    } else {
+      updateRoute({ ...query, c: collection });
+    }
+  };
+
+  const toggleSelectedTag = tag => {
+    if (query.t && query.t.includes(tag)) {
+      updateRoute({ ...query, t: query.t.filter(t => t !== tag) });
+    } else {
+      updateRoute({
+        ...query,
+        t: [...selectedTags, tag],
+      });
+    }
+  };
 
   return (
     <>
@@ -28,8 +58,7 @@ const App = () => {
             color="grey.7"
             py={1}
             onClick={() => {
-              setSelectedCollection(undefined);
-              setSelectedTag(undefined);
+              updateRoute({});
             }}
           >
             Reset filters
@@ -44,7 +73,7 @@ const App = () => {
                     <Link
                       active={selectedCollection === collection.slug}
                       fontSize={1}
-                      onClick={() => setSelectedCollection(collection.slug)}
+                      onClick={() => toggleSelectedCollection(collection.slug)}
                     >
                       {collection.name}{' '}
                       <small>({collection.modules.length})</small>
@@ -57,9 +86,9 @@ const App = () => {
               {allTags.map(tag => (
                 <Box key={tag}>
                   <Link
-                    active={selectedTag === tag}
+                    active={selectedTags.includes(tag)}
                     fontSize={1}
-                    onClick={() => setSelectedTag(tag)}
+                    onClick={() => toggleSelectedTag(tag)}
                   >
                     {tag}
                   </Link>
@@ -70,7 +99,7 @@ const App = () => {
         </Box>
         <Box p={3} flex={1}>
           <Flex flexWrap="wrap" mx={-2} css="max-width: 1200px">
-            {!selectedCollection && !selectedTag ? (
+            {!selectedCollection && !selectedTags.length ? (
               <Text>No filter selected.</Text>
             ) : (
               data
@@ -83,12 +112,9 @@ const App = () => {
                   collection.modules
                     .filter(module => module.disabled !== 'true')
                     .filter(module =>
-                      selectedTag
-                        ? module.tags.some(
-                            tag =>
-                              tag.toLowerCase() === selectedTag.toLowerCase(),
-                          )
-                        : true,
+                      selectedTags.length
+                        ? selectedTags.every(tag => module.tags.includes(tag))
+                        : !!selectedCollection,
                     )
                     .sort((a, b) => alphabeticSort(a.name, b.name))
                     .map(module => (
