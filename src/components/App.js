@@ -4,11 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { Flex, Box, Text, Button } from 'rebass';
 import data from '../data/data.json';
 import allTags from '../data/tags';
+import { updatedAt } from '../data/updatedAt.js';
 import alphabeticSort from '../lib/alphabetic-sort';
 import Icon from './Icon.js';
 import Link from './Link';
 import ModuleCard from './ModuleCard';
 import Title from './Title';
+
+const updatedAtString = new Date(updatedAt).toString();
 
 const App = () => {
   const [, update] = useState();
@@ -49,10 +52,12 @@ const App = () => {
 
   return (
     <>
-      <Flex m={4} justifyContent="center">
+      <Flex mx={1} my={4} flexDirection="column">
         <Title fontSize={4} fontWeight="bold">
           VCV Rack Modules
         </Title>
+        <small>Index last updated:</small>
+        <small>{updatedAtString}</small>
       </Flex>
       <Flex m={1}>
         <Box>
@@ -131,15 +136,18 @@ const App = () => {
           </Flex>
         </Box>
       </Flex>
-      <Flex m={4} justifyContent="center">
-        <Icon icon={MarkGithub} color="black" mr={2} />{' '}
-        <a
-          href="https://github.com/dburles/vcvm"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+      <Flex mx={1} my={4} flexDirection="column">
+        <Text>Issues, comments, suggestions?</Text>
+        <Box my={2}>
+          <Icon icon={MarkGithub} color="black" mr={2} />
+          <a
+            href="https://github.com/dburles/vcvm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </Box>
       </Flex>
     </>
   );
