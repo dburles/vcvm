@@ -1,8 +1,19 @@
-import { Law, Versions, Person, LinkExternal } from '@primer/octicons-react';
+import {
+  Law,
+  Versions,
+  Person,
+  LinkExternal,
+  Plus,
+} from '@primer/octicons-react';
 import React from 'react';
 import { Flex, Box, Card, Text } from 'rebass';
+import { css } from 'styled-components';
 import Divider from './Divider';
 import Icon from './Icon';
+
+const DetailText = props => (
+  <Text width={1 / 2} color="grey.8" fontSize={0} my={1} {...props} />
+);
 
 const ModuleCard = props => {
   return (
@@ -16,16 +27,18 @@ const ModuleCard = props => {
         `}
       >
         <Box>
-          <Flex flexDirection="column">
-            <Text fontWeight="bold">{props.module.name}</Text>
-            <Text color="grey.8" fontSize={0} mt={2}>
-              <Icon mr={1} icon={LinkExternal} />
+          <Flex flexDirection="row">
+            <Text flex={1} fontWeight="bold">
+              {props.module.name}
+            </Text>
+            <Text fontSize={0}>
+              <Icon mr={1} icon={Plus} />
               <a
-                href={props.collection.pluginUrl}
+                href={`https://vcvrack.com/plugins.html#${props.collection.name}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {props.collection.brand || props.collection.name}
+                Install
               </a>
             </Text>
           </Flex>
@@ -37,16 +50,26 @@ const ModuleCard = props => {
           </Text>
         </Box>
         <Box mt={3}>
-          <Flex flexDirection="column">
-            <Text color="grey.8" fontSize={0}>
+          <Flex width={1} flexWrap="wrap">
+            <DetailText>
               <Icon mr={1} icon={Versions} /> {props.collection.version}
-            </Text>
-            <Text color="grey.8" fontSize={0} my={2}>
+            </DetailText>
+            <DetailText>
               <Icon mr={1} icon={Law} /> {props.collection.license}
-            </Text>
-            <Text color="grey.8" fontSize={0}>
+            </DetailText>
+            <DetailText>
               <Icon mr={1} icon={Person} /> {props.collection.author}
-            </Text>
+            </DetailText>
+            <DetailText>
+              <Icon mr={1} icon={LinkExternal} />{' '}
+              <a
+                href={props.collection.pluginUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {props.collection.brand || props.collection.name}
+              </a>
+            </DetailText>
           </Flex>
         </Box>
       </Flex>
