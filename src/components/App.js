@@ -119,7 +119,10 @@ const App = () => {
                 )
                 .map(collection =>
                   collection.modules
-                    .filter(module => module.disabled !== 'true')
+                    .filter(
+                      module =>
+                        module.disabled !== 'true' && module.disabled !== true,
+                    )
                     .filter(module =>
                       selectedTags.length
                         ? selectedTags.every(tag => module.tags.includes(tag))
