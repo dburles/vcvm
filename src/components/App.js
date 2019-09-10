@@ -77,18 +77,23 @@ const App = () => {
               <Title mb={2}>Collections</Title>
               {data
                 .sort((a, b) => alphabeticSort(a.name, b.name))
-                .map(collection => (
-                  <Box key={collection.slug}>
-                    <Link
-                      active={selectedCollection === collection.slug}
-                      fontSize={1}
-                      onClick={() => toggleSelectedCollection(collection.slug)}
-                    >
-                      {collection.name}{' '}
-                      <small>({collection.modules.length})</small>
-                    </Link>
-                  </Box>
-                ))}
+                .map(collection =>
+                  // Hide collections with no modules array
+                  collection.modules ? (
+                    <Box key={collection.slug}>
+                      <Link
+                        active={selectedCollection === collection.slug}
+                        fontSize={1}
+                        onClick={() =>
+                          toggleSelectedCollection(collection.slug)
+                        }
+                      >
+                        {collection.name}{' '}
+                        <small>({collection.modules.length})</small>
+                      </Link>
+                    </Box>
+                  ) : null,
+                )}
             </Flex>
             <Flex flexDirection="column" px={2}>
               <Title mb={2}>Tags</Title>
