@@ -123,7 +123,7 @@ const App = () => {
                     : true,
                 )
                 .map(collection =>
-                  collection.modules
+                  (collection.modules || [])
                     .filter(
                       module =>
                         module.disabled !== 'true' && module.disabled !== true,
